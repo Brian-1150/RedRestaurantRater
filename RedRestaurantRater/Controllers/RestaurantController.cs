@@ -31,5 +31,26 @@ namespace RedRestaurantRater.Controllers
             }
             return View(restaurant);
         }
+        //Get: Restaraurant/Delete/{id}
+        public ActionResult Delete(int? id) {
+            if (id is null)
+                return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
+        Restaurant restaurant = _db.Restaurants.Find(id);
+            if (restaurant is null)
+                return HttpNotFound();
+            return View(restaurant);
+        }
+        //POST : Restaurant/Delete/{id}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(int id) {
+            Restaurant restaurant = _db.Restaurants.Find(id);
+            _db.Restaurants.Remove(restaurant);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+
+
     }
 }
