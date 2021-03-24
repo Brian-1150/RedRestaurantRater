@@ -29,6 +29,16 @@ namespace RedRestaurantRater.Controllers {
             }
             return View(restaurant);
         }
+
+        //Get: Restaurant/Details/{id}
+        public ActionResult Details(int? id) {
+            if (id is null)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            Restaurant restaurant = _db.Restaurants.Find(id);
+            if (restaurant is null)
+                return HttpNotFound();
+            return View(restaurant);
+        }
         //Get:  Restaurant/Edit/{id}
         public ActionResult Edit(int? id) {
             if (id is null)

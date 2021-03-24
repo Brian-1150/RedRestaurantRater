@@ -34,12 +34,13 @@
                         @Html.DisplayFor(modelItem => item.Rating)
                     </td>
                     <td>
-                       | @Html.ActionLink("Change", "Edit", new { id = item.RestaurantID }) |
-                        @Html.ActionLink("More Info", "Details", new { id = item.RestaurantID }) |
-                        @Html.ActionLink("Remove", "Delete", new { id = item.RestaurantID }) |
+                        
+                        @Html.ActionLink("Change", "Edit", new { id = item.RestaurantID }) <span>&#8226;</span>
+                        @Html.ActionLink("More Info", "Details", new { id = item.RestaurantID }) <span>&#8226;</span>
+                        @Html.ActionLink("Remove", "Delete", new { id = item.RestaurantID }) 
 
 
                     </td>
                 </tr>
-            }
+    }
 </table>
